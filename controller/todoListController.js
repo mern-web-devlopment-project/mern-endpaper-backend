@@ -10,7 +10,8 @@ const getAList = async(req,res) => {
 const addTodoItem = async(req,res) => {
   const {text} = req.body
   const newListModel = new listModel ({
-    text:text
+    text:text,
+    status:false
   })
   try{
     const newList = await newListModel.save()
@@ -23,9 +24,10 @@ const addTodoItem = async(req,res) => {
  }
 
  const updateTodoItem = async(req,res) => {
-  const {text} = req.body
+  const {text,status} = req.body
   if(text!== ''){
     res.getList.text = text 
+    res.getList.status = status
   }
   try{
     const updateList = await res.getList.save()
